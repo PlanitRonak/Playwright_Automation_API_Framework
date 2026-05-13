@@ -34,7 +34,7 @@
                 <configuration>
                     <suiteXmlFiles>
                         <suiteXmlFile>
-                            src/test/resources/testRunnerFiles/employeeRunner.xml
+                            testRunnerFiles/goRestRunner.xml
                         </suiteXmlFile>
                     </suiteXmlFiles>
                 </configuration>

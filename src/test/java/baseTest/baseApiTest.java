@@ -1,5 +1,6 @@
 package baseTest;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.microsoft.playwright.APIRequest;
 import com.microsoft.playwright.APIRequestContext;
 import com.microsoft.playwright.Playwright;
@@ -19,8 +20,9 @@ public class baseApiTest {
     protected Playwright playwright;
     protected APIRequestContext request;
     protected Properties prop;
+    protected ObjectMapper mapper = new ObjectMapper();
 
-    @BeforeClass
+    @BeforeClass(alwaysRun = true)
     public void setup() {
         playwright = Playwright.create();
         initProp();
@@ -28,7 +30,7 @@ public class baseApiTest {
                 .setBaseURL(prop.getProperty("url")));
     }
 
-    @AfterClass
+    @AfterClass(alwaysRun = true)
     public void teardown() {
         logger.info("Closing Playwright and disposing request context...");
         request.dispose();

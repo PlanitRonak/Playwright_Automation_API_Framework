@@ -1,0 +1,10 @@
+<suite name="Playwright API Test Suite" use-default-listeners="true">
+    <listeners>
+        <listener class-name="listeners.extentReportsListener" />
+    </listeners>
+    <test name="API Tests">
+        <classes>
+            <class name="testCases.goRestApiTest"/>
+        </classes>
+    </test>
+</suite>
