@@ -1,7 +1,5 @@
 <suite name="Playwright API Test Suite" use-default-listeners="true">
     <listeners>
-<!--        <listener class-name="org.testng.reporters.EmailableReporter"/>-->
-<!--        <listener class-name="org.testng.reporters.XMLReporter"/>-->
         <listener class-name="listeners.extentReportsListener" />
     </listeners>
     <test name="API Tests">
