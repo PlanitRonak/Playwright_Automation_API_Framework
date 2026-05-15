@@ -1,9 +1,8 @@
-package testCases;
+package testCases.goRestAPI;
 
 import baseTest.baseApiTest;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.microsoft.playwright.APIResponse;
 import com.microsoft.playwright.options.RequestOptions;
 import org.slf4j.Logger;

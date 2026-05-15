@@ -7,7 +7,9 @@ import com.microsoft.playwright.Playwright;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -22,7 +24,7 @@ public class baseApiTest {
     protected Properties prop;
     protected ObjectMapper mapper = new ObjectMapper();
 
-    @BeforeClass(alwaysRun = true)
+    @BeforeMethod(alwaysRun = true)
     public void setup() {
         playwright = Playwright.create();
         initProp();
@@ -30,7 +32,7 @@ public class baseApiTest {
                 .setBaseURL(prop.getProperty("url")));
     }
 
-    @AfterClass(alwaysRun = true)
+    @AfterMethod(alwaysRun = true)
     public void teardown() {
         logger.info("Closing Playwright and disposing request context...");
         request.dispose();
