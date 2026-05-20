@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.microsoft.playwright.APIRequest;
 import com.microsoft.playwright.APIRequestContext;
 import com.microsoft.playwright.Playwright;
+import com.microsoft.playwright.Request;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.annotations.AfterClass;
@@ -14,6 +15,8 @@ import org.testng.annotations.BeforeMethod;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Properties;
 
 public class baseApiTest {
@@ -28,8 +31,7 @@ public class baseApiTest {
     public void setup() {
         playwright = Playwright.create();
         initProp();
-        request = playwright.request().newContext(new APIRequest.NewContextOptions()
-                .setBaseURL(prop.getProperty("url")));
+        request = setUpRequest(prop);
     }
 
     @AfterMethod(alwaysRun = true)
@@ -48,6 +50,29 @@ public class baseApiTest {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
+        }
+    }
+
+    public APIRequestContext setUpRequest(Properties prop) {
+        Map<String, String> headersList = new HashMap<String, String>();
+        switch(prop.getProperty("authType").toLowerCase()) {
+            case "jwt" :
+                headersList.put("Authorization", "Bearer "+prop.getProperty("token"));
+                return playwright.request().newContext(new APIRequest.NewContextOptions()
+                        .setBaseURL(prop.getProperty("url"))
+                        .setExtraHTTPHeaders(headersList));
+            case "basicauth" :
+                return playwright.request().newContext(new APIRequest.NewContextOptions()
+                        .setBaseURL(prop.getProperty("url"))
+                        .setHttpCredentials(prop.getProperty("username"), prop.getProperty("password")));
+            case "apiKey" :
+                headersList.put("X-Api-Key", prop.getProperty("value"));
+                return playwright.request().newContext(new APIRequest.NewContextOptions()
+                        .setBaseURL(prop.getProperty("url"))
+                        .setExtraHTTPHeaders(headersList));
+            default :
+                return playwright.request().newContext(new APIRequest.NewContextOptions()
+                        .setBaseURL(prop.getProperty("url")));
         }
     }
 }

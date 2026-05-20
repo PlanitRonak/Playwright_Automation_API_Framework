@@ -25,7 +25,6 @@ public class createMultipleUsers extends baseApiTest {
         System.out.println("Status : "+users.getStatus());
         Thread.sleep(4000);
         APIResponse res = request.post("/public/v2/users", RequestOptions.create()
-                .setHeader("Authorization","Bearer "+prop.getProperty("token"))
                 .setData(users));
         System.out.println("Response body : "+res.text());
         JsonNode obj = mapper.readTree(res.text());
@@ -36,8 +35,7 @@ public class createMultipleUsers extends baseApiTest {
     @Test(priority = 1, dependsOnMethods = "multipleUsers")
     public void deleteUsers() throws InterruptedException {
         for (int i = 0 ; i < ids.size() ; i++) {
-            APIResponse res = request.delete("/public/v2/users/"+ids.get(i), RequestOptions.create()
-                    .setHeader("Authorization","Bearer "+prop.getProperty("token")));
+            APIResponse res = request.delete("/public/v2/users/"+ids.get(i));
             Assert.assertEquals(res.status(), 204, "User not found");
             System.out.println("User deleted Successfully.");
             Thread.sleep(4000);

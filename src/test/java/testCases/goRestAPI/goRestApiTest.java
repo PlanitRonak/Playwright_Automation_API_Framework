@@ -47,7 +47,6 @@ public class goRestApiTest extends baseApiTest {
             employee.setGender("male");
             employee.setStatus("active");
             APIResponse res = request.post("/public/v2/users",RequestOptions.create()
-                            .setHeader("Authorization","Bearer "+prop.getProperty("token"))
                             .setData(employee));
             System.out.println("Response body : "+res.text());
             JsonNode obj = mapper.readTree(res.text());
@@ -62,16 +61,13 @@ public class goRestApiTest extends baseApiTest {
             update.setName("Updated Name");
             update.setStatus("Inactive");
             APIResponse res = request.put("/public/v2/users/"+id, RequestOptions.create()
-                    .setHeader("Authorization","Bearer "+prop.getProperty("token"))
                     .setData(update));
             System.out.println("Updated request body : "+res.text());
     }
 
     @Test(priority = 5, enabled = true)
     public void deleteUser() {
-        APIResponse res = request.delete("/public/v2/users/"+id, RequestOptions.create()
-                .setHeader("Authorization","Bearer "+prop.getProperty("token"))
-        );
+        APIResponse res = request.delete("/public/v2/users/"+id);
         Assert.assertEquals(res.status(), 204, "User not found");
         System.out.println("User deleted Successfully.");
     }
