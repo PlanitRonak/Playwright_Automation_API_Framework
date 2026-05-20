@@ -1,11 +1,14 @@
-<suite name="Playwright API Test Suite" use-default-listeners="true">
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite name="Playwright API Test Suite" parallel="classes" thread-count="2">
     <listeners>
         <listener class-name="listeners.extentReportsListener" />
     </listeners>
     <test name="API Tests">
         <classes>
             <class name="testCases.goRestAPI.goRestApiTest"/>
-<!--            <class name="testCases.goRestAPI.createMultipleUsers"/>-->
+            <class name="testCases.goRestAPI.createMultipleUsers"/>
         </classes>
     </test>
 </suite>
