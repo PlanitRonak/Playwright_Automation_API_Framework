@@ -21,7 +21,7 @@ public class jwtBearerAuth extends baseApiTest {
         employee.setStatus("active");
         APIResponse res = request.post("/public/v2/users", RequestOptions.create()
                 .setData(employee));
-        System.out.println("Response body : "+res.text());
+        logger.info("Response body : "+res.text());
         JsonNode obj = mapper.readTree(res.text());
         id = Integer.parseInt(String.valueOf(obj.get("id")));
         Assert.assertEquals(res.status(), 201, "User not created.");
@@ -32,6 +32,6 @@ public class jwtBearerAuth extends baseApiTest {
     public void deleteUser() {
         APIResponse res = request.delete("/public/v2/users/"+id);
         Assert.assertEquals(res.status(), 204, "User not found");
-        System.out.println("User deleted Successfully.");
+        logger.info("User deleted Successfully.");
     }
 }

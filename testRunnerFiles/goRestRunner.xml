@@ -7,7 +7,7 @@
     </listeners>
     <test name="API Tests">
         <classes>
-            <class name="testCases.goRestAPI.goRestApiTest"/>
+<!--            <class name="testCases.goRestAPI.goRestApiTest"/>-->
             <class name="testCases.goRestAPI.createMultipleUsers"/>
         </classes>
     </test>

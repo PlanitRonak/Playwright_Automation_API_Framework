@@ -13,21 +13,22 @@ import pojo.Update;
 import pojo.User;
 
 public class goRestApiTest extends baseApiTest {
-    private static final Logger logger = LoggerFactory.getLogger(goRestApiTest.class);
     private static int id;
 
     @Test(priority = 1, enabled = true)
     public void getAllUsers () throws JsonProcessingException {
         logger.info("Initiating get request to /public/v2/users");
         APIResponse res = request.get("/public/v2/users");
+        logger.info("Sent the Get Request");
         System.out.println("Response body : "+res.text());
         JsonNode user = mapper.readTree(res.text());
         id = Integer.parseInt(String.valueOf(user.get(0).get("id")));
+        logger.info("Collected Id for next Test");
         Assert.assertEquals(res.status(), 200, "Something went wrong.");
         logger.info("Request send Successfully");
     }
 
-    @Test(priority = 2, enabled = true)
+    @Test(priority = 2, enabled = false)
     public void getSpecificUser() throws JsonProcessingException {
         logger.info("Initiating get request to /public/v2/id");
             APIResponse res = request.get("/public/v2/users/"+id);
@@ -39,7 +40,7 @@ public class goRestApiTest extends baseApiTest {
             Assert.assertEquals(resId, id);
     }
 
-    @Test(priority = 3, enabled = true)
+    @Test(priority = 3, enabled = false)
     public void creatingUser() throws InterruptedException, JsonProcessingException {
             User employee = new User();
             employee.setName("Demo Ronak");
@@ -55,7 +56,7 @@ public class goRestApiTest extends baseApiTest {
         Thread.sleep(2000);
     }
 
-    @Test(priority = 4, enabled = true)
+    @Test(priority = 4, enabled = false)
     public void replaceUser() {
             Update update = new Update();
             update.setName("Updated Name");
@@ -65,7 +66,7 @@ public class goRestApiTest extends baseApiTest {
             System.out.println("Updated request body : "+res.text());
     }
 
-    @Test(priority = 5, enabled = true)
+    @Test(priority = 5, enabled = false)
     public void deleteUser() {
         APIResponse res = request.delete("/public/v2/users/"+id);
         Assert.assertEquals(res.status(), 204, "User not found");

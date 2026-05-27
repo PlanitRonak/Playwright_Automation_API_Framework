@@ -1,0 +1,7 @@
+2026-05-27 12:03:21 INFO  baseApiTest:71 - Log4j initialized for this run: 2026_05_27_12-03-21
+2026-05-27 12:03:21 INFO  baseApiTest:22 - Name : DemoNikhil
+2026-05-27 12:03:21 INFO  baseApiTest:23 - Email : demoN@example.com
+2026-05-27 12:03:21 INFO  baseApiTest:24 - Gender : male
+2026-05-27 12:03:21 INFO  baseApiTest:25 - Status : inactive
+2026-05-27 12:03:26 INFO  baseApiTest:29 - Response body : {"id":8479578,"name":"DemoNikhil","email":"demoN@example.com","gender":"male","status":"inactive"}
+2026-05-27 12:03:26 INFO  baseApiTest:43 - Closing Playwright and disposing request context...

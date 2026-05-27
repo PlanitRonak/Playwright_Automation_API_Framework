@@ -19,14 +19,14 @@ public class createMultipleUsers extends baseApiTest {
 
     @Test(priority = 0, dataProviderClass = Dataproviders.class, dataProvider = "createUsers")
     public void multipleUsers(User users) throws JsonProcessingException, InterruptedException {
-        System.out.println("Name : "+users.getName());
-        System.out.println("Email : "+users.getEmail());
-        System.out.println("Gender : "+users.getGender());
-        System.out.println("Status : "+users.getStatus());
+        logger.info("Name : "+users.getName());
+        logger.info("Email : "+users.getEmail());
+        logger.info("Gender : "+users.getGender());
+        logger.info("Status : "+users.getStatus());
         Thread.sleep(4000);
         APIResponse res = request.post("/public/v2/users", RequestOptions.create()
                 .setData(users));
-        System.out.println("Response body : "+res.text());
+        logger.info("Response body : "+res.text());
         JsonNode obj = mapper.readTree(res.text());
         ids.add(Integer.parseInt(String.valueOf(obj.get("id"))));
         Assert.assertEquals(res.status(), 201, "User Not Created.");
@@ -37,7 +37,7 @@ public class createMultipleUsers extends baseApiTest {
         for (int i = 0 ; i < ids.size() ; i++) {
             APIResponse res = request.delete("/public/v2/users/"+ids.get(i));
             Assert.assertEquals(res.status(), 204, "User not found");
-            System.out.println("User deleted Successfully.");
+            logger.info("User deleted Successfully.");
             Thread.sleep(4000);
         }
     }

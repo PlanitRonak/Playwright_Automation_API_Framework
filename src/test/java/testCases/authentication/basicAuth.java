@@ -11,6 +11,6 @@ public class basicAuth extends baseApiTest {
     public void basicAuthorization() {
         APIResponse response = request.get("/basic-auth");
         Assert.assertEquals(response.status(), 200, "Authorization failed.");
-        System.out.println("Basic Auth Success.");
+        logger.info("Basic Auth Success.");
     }
 }

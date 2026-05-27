@@ -1,0 +1,6 @@
+2026-05-27 11:37:38 INFO  baseApiTest:71 - Log4j initialized for this run: 2026_05_27_11-37-38
+2026-05-27 11:37:38 INFO  baseApiTest:20 - Initiating get request to /public/v2/users
+2026-05-27 11:37:39 INFO  baseApiTest:22 - Sent the Get Request
+2026-05-27 11:37:39 INFO  baseApiTest:26 - Collected Id for next Test
+2026-05-27 11:37:39 INFO  baseApiTest:28 - Request send Successfully
+2026-05-27 11:37:39 INFO  baseApiTest:43 - Closing Playwright and disposing request context...

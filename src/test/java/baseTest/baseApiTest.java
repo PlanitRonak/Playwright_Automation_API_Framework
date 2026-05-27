@@ -5,8 +5,9 @@ import com.microsoft.playwright.APIRequest;
 import com.microsoft.playwright.APIRequestContext;
 import com.microsoft.playwright.Playwright;
 import com.microsoft.playwright.Request;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+
+import org.apache.log4j.PropertyConfigurator;
+import org.apache.log4j.Logger;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
@@ -15,13 +16,15 @@ import org.testng.annotations.BeforeMethod;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
 
 public class baseApiTest {
 
-    private static final Logger logger = LoggerFactory.getLogger(baseApiTest.class);
+    protected static final Logger logger = org.apache.log4j.Logger.getLogger(baseApiTest.class);
     protected Playwright playwright;
     protected APIRequestContext request;
     protected Properties prop;
@@ -31,6 +34,7 @@ public class baseApiTest {
     public void setup() {
         playwright = Playwright.create();
         initProp();
+        intiLogger();
         request = setUpRequest(prop);
     }
 
@@ -50,6 +54,23 @@ public class baseApiTest {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
+        }
+    }
+
+    public void intiLogger() {
+        try {
+            String timestamp = new SimpleDateFormat("yyyy_MM_dd_HH-mm-ss").format(new Date());
+            System.setProperty("current.date", timestamp);
+            System.setProperty("projectName", prop.getProperty("ProjectName"));
+
+            Properties props = new Properties();
+
+            props.load(new FileInputStream(System.getProperty("user.dir")+"\\src\\test\\java\\config\\log4j.properties"));
+            PropertyConfigurator.configure(props);
+
+            logger.info("Log4j initialized for this run: " + timestamp);
+        } catch (Exception e) {
+            System.err.println("Error initializing Log4j: " + e.getMessage());
         }
     }
 
