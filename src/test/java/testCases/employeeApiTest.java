@@ -8,10 +8,6 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class employeeApiTest extends baseApiTest {
-    private static final Logger logger = LoggerFactory.getLogger(employeeApiTest.class);
-    private final String testEnvironment = System.getProperty("env", "dev");
-    private final String filePath = String.format("src/test/resources/testdata/%s.json", testEnvironment);
-
     @Test(enabled = true)
     public void testGetUsers() {
         logger.info("Initiating get request to /employees");
@@ -36,7 +32,7 @@ public class employeeApiTest extends baseApiTest {
 //            e.printStackTrace();
 //        }
         Assert.assertEquals(response.status(), 200, "Status code mismatch");
-        logger.info("List of employees : {}", response.text());
+        logger.info("List of employees : {}"+response.text());
     }
 
 //    response.as(AmplifyPayload.class); Response in POJO class formate.

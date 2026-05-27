@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite name="Playwright API Test Suite">
+    <listeners>
+        <listener class-name="listeners.extentReportsListener" />
+    </listeners>
+    <test name="API Tests">
+        <classes>
+<!--            <class name="testCases.authentication.jwtBearerAuth"/>-->
+            <class name="testCases.authentication.basicAuth" />
+        </classes>
+    </test>
+</suite>
