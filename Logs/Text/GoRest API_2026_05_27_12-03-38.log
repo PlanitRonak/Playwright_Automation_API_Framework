@@ -1,6 +1,0 @@
-2026-05-27 12:03:38 INFO  baseApiTest:71 - Log4j initialized for this run: 2026_05_27_12-03-38
-2026-05-27 12:03:39 INFO  baseApiTest:40 - User deleted Successfully.
-2026-05-27 12:03:43 INFO  baseApiTest:40 - User deleted Successfully.
-2026-05-27 12:03:48 INFO  baseApiTest:40 - User deleted Successfully.
-2026-05-27 12:03:52 INFO  baseApiTest:40 - User deleted Successfully.
-2026-05-27 12:03:56 INFO  baseApiTest:43 - Closing Playwright and disposing request context...

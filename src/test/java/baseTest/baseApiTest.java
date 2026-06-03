@@ -34,7 +34,6 @@ public class baseApiTest {
     public void setup() {
         playwright = Playwright.create();
         initProp();
-        intiLogger();
         request = setUpRequest(prop);
     }
 
@@ -54,23 +53,6 @@ public class baseApiTest {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
-        }
-    }
-
-    public void intiLogger() {
-        try {
-            String timestamp = new SimpleDateFormat("yyyy_MM_dd_HH-mm-ss").format(new Date());
-            System.setProperty("current.date", timestamp);
-            System.setProperty("projectName", prop.getProperty("ProjectName"));
-
-            Properties props = new Properties();
-
-            props.load(new FileInputStream(System.getProperty("user.dir")+"\\src\\test\\java\\config\\log4j.properties"));
-            PropertyConfigurator.configure(props);
-
-            logger.info("Log4j initialized for this run: " + timestamp);
-        } catch (Exception e) {
-            System.err.println("Error initializing Log4j: " + e.getMessage());
         }
     }
 
