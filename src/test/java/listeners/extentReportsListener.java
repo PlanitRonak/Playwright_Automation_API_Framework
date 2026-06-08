@@ -70,18 +70,11 @@ public class extentReportsListener implements ITestListener {
     public void onTestFailure(ITestResult result) {
         test = extent.createTest(result.getTestClass().getName());
         test.assignCategory(result.getMethod().getGroups());
-
-        test.log(Status.FAIL, "Test Case Failed is : "+result.getName());
+        test.log(Status.FAIL, "Test Case Failed is: "+result.getName());
         test.log(Status.INFO, result.getThrowable().getMessage());
-
-        System.out.println("FAILED TEST CASE : "
-                + result.getName());
-
-        System.out.println("FAILED CLASS : "
-                + result.getTestClass().getName());
-
-        System.out.println("EXCEPTION : "
-                + result.getThrowable());
+        System.out.println("FAILED TEST CASE: "+result.getName());
+        System.out.println("FAILED CLASS: "+result.getTestClass().getName());
+        System.out.println("EXCEPTION: "+result.getThrowable());
     }
 
     public void onTestSkipped(ITestResult result) {

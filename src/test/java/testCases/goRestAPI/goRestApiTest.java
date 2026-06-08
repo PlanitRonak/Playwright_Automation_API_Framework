@@ -17,7 +17,7 @@ public class goRestApiTest extends baseApiTest {
 
     @Test(priority = 1, enabled = true)
     public void getAllUsers () throws JsonProcessingException {
-        logger.info("Initiating get request to /public/v2/users");
+        logger.info("Initiating get request to getAllUsers");
         APIResponse res = request.get("/public/v2/users");
         logger.info("Sent the Get Request");
         System.out.println("Response body : "+res.text());
@@ -28,9 +28,9 @@ public class goRestApiTest extends baseApiTest {
         logger.info("Request send Successfully");
     }
 
-    @Test(priority = 2, enabled = false)
+    @Test(priority = 2, enabled = true)
     public void getSpecificUser() throws JsonProcessingException {
-        logger.info("Initiating get request to /public/v2/id");
+        logger.info("Initiating get request to getSpecificUser");
             APIResponse res = request.get("/public/v2/users/"+id);
             System.out.println("User : "+res.text());
             System.out.println("URL : "+res.url());
