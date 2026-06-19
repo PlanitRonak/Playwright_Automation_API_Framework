@@ -11,6 +11,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import pojo.Update;
 import pojo.User;
+import utilities.jsonReader;
 
 public class goRestApiTest extends baseApiTest {
     private static int id;
@@ -34,9 +35,10 @@ public class goRestApiTest extends baseApiTest {
             APIResponse res = request.get("/public/v2/users/"+id);
             System.out.println("User : "+res.text());
             System.out.println("URL : "+res.url());
-            JsonNode jsonResponse = mapper.readTree(res.text());
-            System.out.println(jsonResponse.get("id"));
-            int resId = Integer.parseInt(String.valueOf(jsonResponse.get("id")));
+            jsonReader jsonHelper = new jsonReader(res.text());
+//            JsonNode jsonResponse = mapper.readTree(res.text());
+            System.out.println(jsonHelper.getStringValue("id"));
+            int resId = jsonHelper.getIntValue("id");
             Assert.assertEquals(resId, id);
     }
 
