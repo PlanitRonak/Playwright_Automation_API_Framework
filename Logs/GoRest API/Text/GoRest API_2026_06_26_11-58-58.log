@@ -1,0 +1,5 @@
+2026-06-26 11:59:07 INFO  baseApiTest:21 - Initiating get request to getAllUsers
+2026-06-26 11:59:08 INFO  baseApiTest:23 - Sent the Get Request
+2026-06-26 11:59:08 INFO  baseApiTest:27 - Collected Id for next Test
+2026-06-26 11:59:08 INFO  baseApiTest:29 - Request send Successfully
+2026-06-26 11:59:08 INFO  baseApiTest:35 - Closing Playwright and disposing request context...

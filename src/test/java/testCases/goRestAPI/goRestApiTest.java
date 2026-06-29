@@ -22,21 +22,20 @@ public class goRestApiTest extends baseApiTest {
         APIResponse res = request.get("/public/v2/users");
         logger.info("Sent the Get Request");
         System.out.println("Response body : "+res.text());
-        JsonNode user = mapper.readTree(res.text());
-        id = Integer.parseInt(String.valueOf(user.get(0).get("id")));
+        jsonReader jsonHelper = new jsonReader(res.text());
+        id = jsonHelper.getIntegerValueFromArray(0, "id");
         logger.info("Collected Id for next Test");
         Assert.assertEquals(res.status(), 200, "Something went wrong.");
         logger.info("Request send Successfully");
     }
 
-    @Test(priority = 2, enabled = true)
+    @Test(priority = 2, dependsOnMethods = {"getAllUsers"}, enabled = false)
     public void getSpecificUser() throws JsonProcessingException {
         logger.info("Initiating get request to getSpecificUser");
             APIResponse res = request.get("/public/v2/users/"+id);
             System.out.println("User : "+res.text());
             System.out.println("URL : "+res.url());
             jsonReader jsonHelper = new jsonReader(res.text());
-//            JsonNode jsonResponse = mapper.readTree(res.text());
             System.out.println(jsonHelper.getStringValue("id"));
             int resId = jsonHelper.getIntValue("id");
             Assert.assertEquals(resId, id);
@@ -52,8 +51,8 @@ public class goRestApiTest extends baseApiTest {
             APIResponse res = request.post("/public/v2/users",RequestOptions.create()
                             .setData(employee));
             System.out.println("Response body : "+res.text());
-            JsonNode obj = mapper.readTree(res.text());
-            id = Integer.parseInt(String.valueOf(obj.get("id")));
+            jsonReader jsonHelper = new jsonReader(res.text());
+            id = jsonHelper.getIntValue("id");
             Assert.assertEquals(res.status(), 201, "User not created.");
         Thread.sleep(2000);
     }
@@ -68,7 +67,7 @@ public class goRestApiTest extends baseApiTest {
             System.out.println("Updated request body : "+res.text());
     }
 
-    @Test(priority = 5, enabled = false)
+    @Test(priority = 5, enabled = false, dependsOnMethods = {"creatingUser"})
     public void deleteUser() {
         APIResponse res = request.delete("/public/v2/users/"+id);
         Assert.assertEquals(res.status(), 204, "User not found");

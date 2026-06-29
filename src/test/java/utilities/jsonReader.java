@@ -18,4 +18,12 @@ public class jsonReader {
     public int getIntValue(String attribute) {
         return Integer.parseInt(String.valueOf(jsonResponse.get(attribute)));
     }
+
+    public String getStringValueFromArray(int indexNum, String attribute) {
+        return String.valueOf(jsonResponse.get(indexNum).get(attribute));
+    }
+
+    public int getIntegerValueFromArray(int indexNum, String attribute) {
+        return Integer.parseInt(String.valueOf(jsonResponse.get(indexNum).get(attribute)));
+    }
 }
