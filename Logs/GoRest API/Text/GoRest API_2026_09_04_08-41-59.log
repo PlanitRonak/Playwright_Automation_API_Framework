@@ -1,0 +1,29 @@
+2026-09-04 08:43:08 INFO  baseApiTest:22 - Name : DemoRonak
+2026-09-04 08:43:08 INFO  baseApiTest:23 - Email : demoR@example.com
+2026-09-04 08:43:08 INFO  baseApiTest:24 - Gender : male
+2026-09-04 08:43:08 INFO  baseApiTest:25 - Status : active
+2026-09-04 08:43:12 INFO  baseApiTest:29 - Response body : {"id":8602723,"name":"DemoRonak","email":"demoR@example.com","gender":"male","status":"active"}
+2026-09-04 08:43:12 INFO  baseApiTest:35 - Closing Playwright and disposing request context...
+2026-09-04 08:43:14 INFO  baseApiTest:22 - Name : DemoNikhil
+2026-09-04 08:43:14 INFO  baseApiTest:23 - Email : demoN@example.com
+2026-09-04 08:43:14 INFO  baseApiTest:24 - Gender : male
+2026-09-04 08:43:14 INFO  baseApiTest:25 - Status : inactive
+2026-09-04 08:43:19 INFO  baseApiTest:29 - Response body : {"id":8602724,"name":"DemoNikhil","email":"demoN@example.com","gender":"male","status":"inactive"}
+2026-09-04 08:43:19 INFO  baseApiTest:35 - Closing Playwright and disposing request context...
+2026-09-04 08:43:20 INFO  baseApiTest:22 - Name : DemoRahul
+2026-09-04 08:43:20 INFO  baseApiTest:23 - Email : demoRa@example.com
+2026-09-04 08:43:20 INFO  baseApiTest:24 - Gender : male
+2026-09-04 08:43:20 INFO  baseApiTest:25 - Status : active
+2026-09-04 08:43:25 INFO  baseApiTest:29 - Response body : {"id":8602725,"name":"DemoRahul","email":"demoRa@example.com","gender":"male","status":"active"}
+2026-09-04 08:43:25 INFO  baseApiTest:35 - Closing Playwright and disposing request context...
+2026-09-04 08:43:26 INFO  baseApiTest:22 - Name : DemoOm
+2026-09-04 08:43:26 INFO  baseApiTest:23 - Email : demoO@example.com
+2026-09-04 08:43:26 INFO  baseApiTest:24 - Gender : male
+2026-09-04 08:43:26 INFO  baseApiTest:25 - Status : inactive
+2026-09-04 08:43:31 INFO  baseApiTest:29 - Response body : {"id":8602726,"name":"DemoOm","email":"demoO@example.com","gender":"male","status":"inactive"}
+2026-09-04 08:43:31 INFO  baseApiTest:35 - Closing Playwright and disposing request context...
+2026-09-04 08:43:33 INFO  baseApiTest:40 - User deleted Successfully.
+2026-09-04 08:43:37 INFO  baseApiTest:40 - User deleted Successfully.
+2026-09-04 08:43:42 INFO  baseApiTest:40 - User deleted Successfully.
+2026-09-04 08:43:46 INFO  baseApiTest:40 - User deleted Successfully.
+2026-09-04 08:43:50 INFO  baseApiTest:35 - Closing Playwright and disposing request context...
